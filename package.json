@@ -1,8 +1,8 @@
 {
-  "name": "nest-typescript-starter",
+  "name": "abx-tracks",
   "private": true,
   "version": "1.0.0",
-  "description": "Nest TypeScript starter repository",
+  "description": "Airboxr FTE Backend Assignment",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
