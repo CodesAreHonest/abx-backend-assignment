@@ -1,3 +1,7 @@
+/**
+ * Remove unused table for this assignment.
+ */
+
 drop table if exists Artist;
 drop table if exists Album;
 drop table if exists Customer;
