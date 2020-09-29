@@ -27,7 +27,7 @@ This project is intialzed using:
   You'll be starting with the publicly available database called [Chinook](https://github.com/lerocha/chinook-database). This is what you need to do to setup the database as required:
 
   1. Download the sqlite version of the db
-  2. Using SQL or a db browser of your choice like [this](https://sqlitebrowser.org/), modify the db such that only retains the following tables: Genre, MediaType, Track, Playlist and PlaylistTrack
+  2. Using SQL or a db browser of your choice like [this](https://sqlitebrowser.org/), modify the db such that only retains the following tables: Genre, MediaType, Track, Playlist and Track
   3. Rename the sqlite database file to "abx.db" and place it in this project's root directory (replace the existing auto-generated one)
 
 - Generate entities using the [typeorm-model-generator](https://www.npmjs.com/package/typeorm-model-generator)
@@ -36,11 +36,11 @@ This project is intialzed using:
 
   - Track ~ 1million
   - Playlist ~ 100k
-  - PlaylistTrack ~10million
+  - Track ~10million
 
 - Create the following API endpoints:
   1. get Track by name
-  2. get PlaylistTrack by playlist name & track name
+  2. get Track by playlist name & track name
   3. get number of tracks for a playlist name
 
 ## BONUS
