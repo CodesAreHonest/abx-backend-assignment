@@ -1,10 +1,15 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Column, Entity, Index, OneToMany } from "typeorm";
+import { Track } from "./Track";
 
-@Entity()
+@Entity("Genre")
 export class Genre {
-    @PrimaryGeneratedColumn()
-    GenreId: number;
+    @Index("IPK_Genre", ["genreId"], { unique: true })
+    @Column("integer", { primary: true, name: "GenreId", unique: true })
+    genreId: number;
 
-    @Column()
-    Name: string;
+    @Column("nvarchar", { name: "Name", nullable: true, length: 120 })
+    name: string | null;
+
+    @OneToMany(() => Track, (track) => track.genre)
+    tracks: Track[];
 }

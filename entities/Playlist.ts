@@ -1,10 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Column, Entity, Index, ManyToMany } from "typeorm";
+import { Track } from "./Track";
 
-@Entity()
+@Entity("Playlist")
 export class Playlist {
-    @PrimaryGeneratedColumn()
-    PlaylistId: number;
+    @Index("IPK_Playlist", ["playlistId"], { unique: true })
+    @Column("integer", { primary: true, name: "PlaylistId", unique: true })
+    playlistId: number;
 
-    @Column()
-    Name: string;
+    @Column("nvarchar", { name: "Name", nullable: true, length: 120 })
+    name: string | null;
+
+    @ManyToMany(() => Track, (track) => track.playlists)
+    tracks: Track[];
 }
