@@ -2,14 +2,16 @@ CREATE TABLE Track_dg_tmp
 (
   TrackId INTEGER not null primary key,
   Name NVARCHAR(200) not null,
-  MediaTypeId INTEGER not null
-    references MediaType,
-  GenreId INTEGER
-    references Genre,
+  MediaTypeId INTEGER not null,
+  GenreId INTEGER not null,
   Composer NVARCHAR(220),
   Milliseconds INTEGER not null,
   Bytes INTEGER,
-  UnitPrice NUMERIC(10,2) not null
+  UnitPrice NUMERIC(10,2) not null,
+
+  PRIMARY KEY(TrackId),
+  FOREIGN KEY (MediaTypeId) REFERENCES MediaType (MediaTypeId),
+  FOREIGN KEY (GenreId) REFERENCES Genre (GenreId)
 );
 
 insert into Track_dg_tmp(TrackId, Name, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)
