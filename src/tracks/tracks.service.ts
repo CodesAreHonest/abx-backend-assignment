@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { GetTrackDto } from './dto/get-track.dto';
 
-import { TrackEntity } from './track.entity';
+import { TrackEntity } from './tracks.entity';
 
 @Injectable()
 export class TracksService {

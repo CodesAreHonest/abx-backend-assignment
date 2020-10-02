@@ -3,7 +3,7 @@ import { TracksController } from './tracks.controller';
 import { TracksService } from './tracks.service';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TrackEntity } from './track.entity';
+import { TrackEntity } from './tracks.entity';
 import { GenreEntity } from './genre.entity';
 import { MediaTypeEntity } from './mediaType.entity';
 import { PlaylistEntity } from './playlist.entity';
