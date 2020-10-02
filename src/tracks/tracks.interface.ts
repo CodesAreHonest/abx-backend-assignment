@@ -1,4 +1,4 @@
-import { TrackEntity as TrackEntity } from './track.entity';
+import { TrackEntity } from './track.entity';
 
 export interface TrackData {
   TrackId: number;
