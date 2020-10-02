@@ -1,9 +1,9 @@
-import { ClassSerializerInterceptor, HttpException, HttpStatus, Injectable, UseInterceptors } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { GetTrackDto } from './dto/get-track.dto';
 
 import { TrackEntity } from './track.entity';
-import { TrackReturnObject } from './tracks.interface';
 
 @Injectable()
 export class TracksService {
@@ -12,7 +12,8 @@ export class TracksService {
     private readonly trackRepository: Repository<TrackEntity>,
   ) {}
 
-  async findOne(name: string): Promise<TrackEntity> {
+  async findOne(getTrackDto: GetTrackDto): Promise<TrackEntity> {
+    const { name } = getTrackDto; 
     const _track = await this.trackRepository.findOne({ name }, {relations: ["playlists", "genre", "mediaType"]});
 
     if (!_track) {
