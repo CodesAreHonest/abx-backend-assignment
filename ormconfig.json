@@ -9,6 +9,6 @@
     "database": "abx.db",
     "schema": "",
     "synchronize": false,
-    "entities": ["entities/*.js"]
+    "entities": ["src/**/**.entity{.ts,.js}"]
   }
 ]

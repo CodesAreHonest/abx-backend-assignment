@@ -2,14 +2,14 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Track } from './tracks.entity';
+import { TrackEntity } from './track.entity';
 import { TrackReturnObject } from './tracks.interface';
 
 @Injectable()
 export class TracksService {
   constructor(
-    @InjectRepository(Track)
-    private readonly trackRepository: Repository<Track>,
+    @InjectRepository(TrackEntity)
+    private readonly trackRepository: Repository<TrackEntity>,
   ) {}
 
   async findOne(name: string): Promise<TrackReturnObject> {
@@ -17,7 +17,7 @@ export class TracksService {
 
     if (!_track) {
       throw new HttpException(
-        'Track not found with given name.',
+        'TrackEntity not found with given name.',
         HttpStatus.NOT_FOUND,
       );
     }
