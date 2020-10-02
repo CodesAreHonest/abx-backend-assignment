@@ -1,4 +1,5 @@
 import { ClassSerializerInterceptor, Controller, Get, Query, UseInterceptors } from '@nestjs/common';
+import { GetTrackDto } from './dto/get-track.dto';
 import { TrackEntity } from './track.entity';
 import { TracksService } from './tracks.service';
 
@@ -8,8 +9,8 @@ export class TracksController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('/')
-  async getList(@Query('name') name: string) {
-    const track = await this.trackService.findOne(name);
+  async getList(@Query() trackData: GetTrackDto) {
+    const track = await this.trackService.findOne(trackData);
     return new TrackEntity(track); 
   }
 }
