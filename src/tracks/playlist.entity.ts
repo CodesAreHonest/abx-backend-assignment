@@ -1,8 +1,8 @@
 import { Column, Entity, Index, ManyToMany } from "typeorm";
-import { TrackEntity } from "../tracks/track.entity";
+import { TrackEntity } from "./track.entity";
 
 @Index("IPK_Playlist", ["playlistId"], { unique: true })
-@Entity("PlaylistEntity")
+@Entity("Playlist")
 export class PlaylistEntity {
   @Column("integer", { primary: true, name: "PlaylistId", unique: true })
   playlistId: number;

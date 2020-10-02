@@ -7,24 +7,29 @@ import {
   ManyToMany,
   ManyToOne,
 } from 'typeorm';
-import { PlaylistEntity } from '../playlist/playlist.entity';
-import { GenreEntity } from '../genre/genre.entity';
-import { MediaTypeEntity } from '../mediaType/mediaType.entity';
+import { PlaylistEntity } from './playlist.entity';
+import { GenreEntity } from './genre.entity';
+import { MediaTypeEntity } from './mediaType.entity';
+
+import { Exclude } from "class-transformer";
 
 @Index('IPK_Track', ['trackId'], { unique: true })
 @Index('IFK_TrackMediaTypeId', ['mediaTypeId'], {})
 @Index('IFK_TrackGenreId', ['genreId'], {})
-@Entity('TrackEntity')
+@Entity('Track')
 export class TrackEntity {
+  @Exclude()
   @Column('integer', { primary: true, name: 'TrackId', unique: true })
   trackId: number;
 
   @Column('nvarchar', { name: 'Name', length: 200 })
   name: string;
 
+  @Exclude()
   @Column('integer', { name: 'MediaTypeId' })
   mediaTypeId: number;
 
+  @Exclude()
   @Column('integer', { name: 'GenreId' })
   genreId: number;
 
@@ -57,4 +62,8 @@ export class TrackEntity {
   @ManyToOne(() => MediaTypeEntity, (mediaType) => mediaType.tracks)
   @JoinColumn([{ name: 'MediaTypeId', referencedColumnName: 'mediaTypeId' }])
   mediaType: MediaTypeEntity;
+
+  constructor(partial: Partial<TrackEntity>) {
+    Object.assign(this, partial); 
+  }
 }

@@ -1,8 +1,8 @@
 import { Column, Entity, Index, OneToMany } from "typeorm";
-import { TrackEntity } from "../tracks/track.entity";
+import { TrackEntity } from "./track.entity";
 
 @Index("IPK_MediaType", ["mediaTypeId"], { unique: true })
-@Entity("MediaTypeEntity")
+@Entity("MediaType")
 export class MediaTypeEntity {
   @Column("integer", { primary: true, name: "MediaTypeId", unique: true })
   mediaTypeId: number;
