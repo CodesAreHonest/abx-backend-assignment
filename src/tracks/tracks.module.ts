@@ -4,9 +4,12 @@ import { TracksService } from './tracks.service';
 
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { TrackEntity } from "./track.entity";
+import { GenreEntity } from './genre.entity';
+import { MediaTypeEntity } from './mediaType.entity';
+import { PlaylistEntity } from './playlist.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TrackEntity])],
+  imports: [TypeOrmModule.forFeature([TrackEntity, GenreEntity, MediaTypeEntity, PlaylistEntity])],
   controllers: [TracksController],
   providers: [TracksService],
 })

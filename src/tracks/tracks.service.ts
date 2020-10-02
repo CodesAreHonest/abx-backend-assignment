@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { ClassSerializerInterceptor, HttpException, HttpStatus, Injectable, UseInterceptors } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -12,20 +12,16 @@ export class TracksService {
     private readonly trackRepository: Repository<TrackEntity>,
   ) {}
 
-  async findOne(name: string): Promise<TrackReturnObject> {
-    const _track = await this.trackRepository.findOne({ name });
+  async findOne(name: string): Promise<TrackEntity> {
+    const _track = await this.trackRepository.findOne({ name }, {relations: ["playlists", "genre", "mediaType"]});
 
     if (!_track) {
       throw new HttpException(
-        'TrackEntity not found with given name.',
+        'Track not found with given name.',
         HttpStatus.NOT_FOUND,
       );
     }
 
-    const returnObject: TrackReturnObject = {
-      track: _track,
-    };
-
-    return returnObject;
+    return _track;
   }
 }
