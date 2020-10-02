@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany } from "typeorm";
-import { Track } from "./Track";
+import { Track } from "../src/tracks/tracks.entity";
 
 @Index("IPK_MediaType", ["mediaTypeId"], { unique: true })
 @Entity("MediaType")
