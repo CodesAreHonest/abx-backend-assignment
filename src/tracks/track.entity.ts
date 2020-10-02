@@ -11,7 +11,7 @@ import { PlaylistEntity } from './playlist.entity';
 import { GenreEntity } from './genre.entity';
 import { MediaTypeEntity } from './mediaType.entity';
 
-import { Exclude } from "class-transformer";
+import { Exclude } from 'class-transformer';
 
 @Index('IPK_Track', ['trackId'], { unique: true })
 @Index('IFK_TrackMediaTypeId', ['mediaTypeId'], {})
@@ -64,6 +64,6 @@ export class TrackEntity {
   mediaType: MediaTypeEntity;
 
   constructor(partial: Partial<TrackEntity>) {
-    Object.assign(this, partial); 
+    Object.assign(this, partial);
   }
 }

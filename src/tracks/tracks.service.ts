@@ -13,8 +13,11 @@ export class TracksService {
   ) {}
 
   async findOne(getTrackDto: GetTrackDto): Promise<TrackEntity> {
-    const { name } = getTrackDto; 
-    const _track = await this.trackRepository.findOne({ name }, {relations: ["playlists", "genre", "mediaType"]});
+    const { name } = getTrackDto;
+    const _track = await this.trackRepository.findOne(
+      { name },
+      { relations: ['playlists', 'genre', 'mediaType'] },
+    );
 
     if (!_track) {
       throw new HttpException(
