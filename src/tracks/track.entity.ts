@@ -7,15 +7,15 @@ import {
   ManyToMany,
   ManyToOne,
 } from 'typeorm';
-import { Playlist } from '../../entities/Playlist';
-import { Genre } from '../../entities/Genre';
-import { MediaType } from '../../entities/MediaType';
+import { PlaylistEntity } from '../playlist/playlist.entity';
+import { GenreEntity } from '../genre/genre.entity';
+import { MediaTypeEntity } from '../mediaType/mediaType.entity';
 
 @Index('IPK_Track', ['trackId'], { unique: true })
 @Index('IFK_TrackMediaTypeId', ['mediaTypeId'], {})
 @Index('IFK_TrackGenreId', ['genreId'], {})
-@Entity('Track')
-export class Track {
+@Entity('TrackEntity')
+export class TrackEntity {
   @Column('integer', { primary: true, name: 'TrackId', unique: true })
   trackId: number;
 
@@ -40,7 +40,7 @@ export class Track {
   @Column('numeric', { name: 'UnitPrice', precision: 10, scale: 2 })
   unitPrice: number;
 
-  @ManyToMany(() => Playlist, (playlist) => playlist.tracks)
+  @ManyToMany(() => PlaylistEntity, (playlist) => playlist.tracks)
   @JoinTable({
     name: 'PlaylistTrack',
     joinColumns: [{ name: 'TrackId', referencedColumnName: 'trackId' }],
@@ -48,13 +48,13 @@ export class Track {
       { name: 'PlaylistId', referencedColumnName: 'playlistId' },
     ],
   })
-  playlists: Playlist[];
+  playlists: PlaylistEntity[];
 
-  @ManyToOne(() => Genre, (genre) => genre.tracks)
+  @ManyToOne(() => GenreEntity, (genre) => genre.tracks)
   @JoinColumn([{ name: 'GenreId', referencedColumnName: 'genreId' }])
-  genre: Genre;
+  genre: GenreEntity;
 
-  @ManyToOne(() => MediaType, (mediaType) => mediaType.tracks)
+  @ManyToOne(() => MediaTypeEntity, (mediaType) => mediaType.tracks)
   @JoinColumn([{ name: 'MediaTypeId', referencedColumnName: 'mediaTypeId' }])
-  mediaType: MediaType;
+  mediaType: MediaTypeEntity;
 }
