@@ -10,4 +10,4 @@
 
 3. get number of tracks for a playlist name
 
-- /number-of-tracks?playlist=something
+- /playlist/track/count?playlistName=

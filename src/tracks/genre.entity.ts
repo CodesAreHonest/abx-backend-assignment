@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany } from 'typeorm';
-import { TrackEntity } from './track.entity';
+import { TrackEntity } from './tracks.entity';
 
 @Index('IPK_Genre', ['genreId'], { unique: true })
 @Entity('Genre')
@@ -13,3 +13,4 @@ export class GenreEntity {
   @OneToMany(() => TrackEntity, (track) => track.genre)
   tracks: TrackEntity[];
 }
+``
