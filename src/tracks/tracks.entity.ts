@@ -7,7 +7,7 @@ import {
   ManyToMany,
   ManyToOne,
 } from 'typeorm';
-import { PlaylistEntity } from './playlist.entity';
+import { PlaylistEntity } from '../playlist-track/playlist.entity';
 import { GenreEntity } from './genre.entity';
 import { MediaTypeEntity } from './mediaType.entity';
 

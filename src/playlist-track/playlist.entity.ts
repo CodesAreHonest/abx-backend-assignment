@@ -1,5 +1,5 @@
 import { Column, Entity, Index, ManyToMany } from 'typeorm';
-import { TrackEntity } from './tracks.entity';
+import { TrackEntity } from '../tracks/tracks.entity';
 
 @Index('IPK_Playlist', ['playlistId'], { unique: true })
 @Entity('Playlist')

@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrackEntity } from './tracks.entity';
 import { GenreEntity } from './genre.entity';
 import { MediaTypeEntity } from './mediaType.entity';
-import { PlaylistEntity } from './playlist.entity';
 
 @Module({
   imports: [
@@ -14,7 +13,6 @@ import { PlaylistEntity } from './playlist.entity';
       TrackEntity,
       GenreEntity,
       MediaTypeEntity,
-      PlaylistEntity,
     ]),
   ],
   controllers: [TracksController],
