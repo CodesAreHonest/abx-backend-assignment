@@ -11,13 +11,18 @@ export class PlaylistTrackService {
     private readonly playlistRepository: Repository<PlaylistEntity>,
   ) {}
 
-  async getTrackCount(name: string): Promise<number> {
-    const _playlist: PlaylistTrackEntity = await this.playlistRepository.findOne(
-      {
-        where: { name },
-        relations: ['tracks'],
-      },
-    );
+  /**
+   * @param name string
+   * 
+   * @tutorial
+   * https://github.com/typeorm/typeorm/issues/1231
+   */
+  getTrackCount = async (name: string): Promise<number> => {
+
+    const _playlist: PlaylistTrackEntity = await this.playlistRepository.createQueryBuilder('playlist')
+        .where("LOWER(playlist.name) = :name", { name: name.toLowerCase()})
+        .leftJoinAndSelect("playlist.tracks", "tracks")
+        .getOne();
 
     if (!_playlist) {
       throw new HttpException(
@@ -27,12 +32,12 @@ export class PlaylistTrackService {
     }
 
     return _playlist.tracks.length;
-  }
+  };
 
-  async getAllWithTrackAndPlaylist(
+  getAllWithTrackAndPlaylist = async (
     playlist: string,
     track: string,
-  ): Promise<PlaylistTrackEntity[]> {
+  ): Promise<PlaylistTrackEntity[]> => {
     const _trackWithPlaylist = await this.playlistRepository
       .createQueryBuilder('playlist')
       .leftJoinAndSelect('playlist.tracks', 'tracks')
@@ -50,5 +55,5 @@ export class PlaylistTrackService {
     }
 
     return _trackWithPlaylist;
-  }
+  };
 }
