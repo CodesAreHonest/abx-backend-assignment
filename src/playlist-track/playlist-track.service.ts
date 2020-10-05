@@ -12,17 +12,21 @@ export class PlaylistTrackService {
   ) {}
 
   /**
-   * @param name string
-   * 
+   * @description
+   * Obtain track count with given playlist name
+   *
+   * @param {string} name
+   * @returns {Promise<number>}
+   *
    * @tutorial
    * https://github.com/typeorm/typeorm/issues/1231
    */
   getTrackCount = async (name: string): Promise<number> => {
-
-    const _playlist: PlaylistTrackEntity = await this.playlistRepository.createQueryBuilder('playlist')
-        .where("LOWER(playlist.name) = :name", { name: name.toLowerCase()})
-        .leftJoinAndSelect("playlist.tracks", "tracks")
-        .getOne();
+    const _playlist: PlaylistTrackEntity = await this.playlistRepository
+      .createQueryBuilder('playlist')
+      .where('LOWER(playlist.name) = :name', { name: name.toLowerCase() })
+      .leftJoinAndSelect('playlist.tracks', 'tracks')
+      .getOne();
 
     if (!_playlist) {
       throw new HttpException(
@@ -31,20 +35,27 @@ export class PlaylistTrackService {
       );
     }
 
-    return _playlist.tracks.length;
+    const tracksCount: number = _playlist.tracks.length;
+    return tracksCount;
   };
 
+  /**
+   * @description
+   * Get track entity with playlist name and track name
+   *
+   * @param {string} playlistName
+   * @param {string} trackName
+   * @returns {Promise<PlaylistTrackEntity[]>}
+   */
   getAllWithTrackAndPlaylist = async (
-    playlist: string,
-    track: string,
+    playlistName: string,
+    trackName: string,
   ): Promise<PlaylistTrackEntity[]> => {
     const _trackWithPlaylist = await this.playlistRepository
       .createQueryBuilder('playlist')
       .leftJoinAndSelect('playlist.tracks', 'tracks')
-      .where('playlist.name = :playlistName COLLATE NOCASE', {
-        playlistName: playlist,
-      })
-      .andWhere('tracks.name = :trackName COLLATE NOCASE', { trackName: track })
+      .where('playlist.name = :playlistName COLLATE NOCASE', { playlistName })
+      .andWhere('tracks.name = :trackName COLLATE NOCASE', { trackName })
       .getMany();
 
     if (!_trackWithPlaylist) {

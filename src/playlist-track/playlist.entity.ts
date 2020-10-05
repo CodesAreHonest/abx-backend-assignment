@@ -1,11 +1,9 @@
-import { Exclude } from 'class-transformer';
 import { Column, Entity, Index, ManyToMany } from 'typeorm';
 import { TrackEntity } from '../tracks/tracks.entity';
 
 @Index('IPK_Playlist', ['playlistId'], { unique: true })
 @Entity('Playlist')
 export class PlaylistEntity {
-  @Exclude()
   @Column('integer', { primary: true, name: 'PlaylistId', unique: true })
   playlistId: number;
 

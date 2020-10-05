@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class GetTrackCountDto {
-    @IsNotEmpty()
-    @IsString()
-    readonly playlistName: string;
+  @IsNotEmpty()
+  @IsString()
+  readonly playlistName: string;
 }

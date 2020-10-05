@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Raw, Repository } from 'typeorm';
 import { GetTrackDto } from './dto/get-track.dto';
 
 import { TrackEntity } from './tracks.entity';
@@ -12,12 +12,23 @@ export class TracksService {
     private readonly trackRepository: Repository<TrackEntity>,
   ) {}
 
+  /**
+   * @param getTrackDto GetTrackDto
+   * @returns _track Promise<TrackEntity>
+   *
+   * @tutorial
+   * https://stackoverflow.com/questions/973541/how-to-set-sqlite3-to-be-case-insensitive-when-string-comparing
+   */
   async findOne(getTrackDto: GetTrackDto): Promise<TrackEntity> {
     const { name } = getTrackDto;
-    const _track = await this.trackRepository.findOne(
-      { name },
-      { relations: ['playlists', 'genre', 'mediaType'] },
-    );
+
+    const _track = await this.trackRepository
+      .createQueryBuilder('track')
+      .where('track.name = :name COLLATE NOCASE', { name: name.toLowerCase() })
+      .leftJoinAndSelect('track.playlists', 'playlists')
+      .leftJoinAndSelect('track.genre', 'genre')
+      .leftJoinAndSelect('track.mediaType', 'mediaType')
+      .getOne();
 
     if (!_track) {
       throw new HttpException(
