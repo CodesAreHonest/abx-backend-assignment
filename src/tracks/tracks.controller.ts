@@ -16,7 +16,7 @@ export class TracksController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('/')
-  async getList(@Query() trackData: GetTrackDto) : Promise<TrackEntity> {
+  async getList(@Query() trackData: GetTrackDto): Promise<TrackEntity> {
     const track = await this.trackService.findOne(trackData);
     return new TrackEntity(track);
   }
