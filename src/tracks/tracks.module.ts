@@ -9,11 +9,7 @@ import { MediaTypeEntity } from './mediaType.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      TrackEntity,
-      GenreEntity,
-      MediaTypeEntity,
-    ]),
+    TypeOrmModule.forFeature([TrackEntity, GenreEntity, MediaTypeEntity]),
   ],
   controllers: [TracksController],
   providers: [TracksService],
