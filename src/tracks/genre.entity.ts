@@ -13,4 +13,4 @@ export class GenreEntity {
   @OneToMany(() => TrackEntity, (track) => track.genre)
   tracks: TrackEntity[];
 }
-``
+``;

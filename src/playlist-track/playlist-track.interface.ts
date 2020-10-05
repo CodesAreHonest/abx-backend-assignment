@@ -1,7 +1,7 @@
-import { TrackEntity } from "src/tracks/tracks.entity";
+import { TrackEntity } from 'src/tracks/tracks.entity';
 
 export interface PlaylistTrackEntity {
-    playlistId: number,
-    name: string,
-    tracks: TrackEntity[],
+  playlistId: number;
+  name: string;
+  tracks: TrackEntity[];
 }
