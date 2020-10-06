@@ -13,7 +13,7 @@ export class PlaylistEntity {
   @ManyToMany(() => TrackEntity, (track) => track.playlists)
   tracks: TrackEntity[];
 
-  constructor(partial: Partial<PlaylistEntity[]>) {
+  static serializeExclude(partial: Partial<PlaylistEntity[]>) {
     Object.assign(this, partial);
   }
 }
