@@ -6,9 +6,12 @@ import { define, factory } from 'typeorm-seeding';
 
 define(PlaylistTrackEntity, () => {
   const _playlistTrack = new PlaylistTrackEntity();
+
   const playlistFactory = factory(PlaylistEntity)() as any;
+  const trackEntityFactory = factory(TrackEntity)() as any;
+
   _playlistTrack.playlist = playlistFactory;
-  _playlistTrack.trackId = factory(TrackEntity)() as any;
+  _playlistTrack.trackId = trackEntityFactory;
 
   return _playlistTrack;
 });
