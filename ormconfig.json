@@ -10,7 +10,7 @@
     "schema": "",
     "synchronize": false,
     "entities": ["dist/**/**.entity{.ts,.js}"],
-    "seeds": ["dist/database/seeds/*.seed.js"],
-    "factories": ["dist/database/factories/*.factory.js"]
+    "seeds": ["dist/database/seeds/*.seed{.ts,.js}"],
+    "factories": ["dist/database/factories/*.factory{.ts,.js}"]
   }
 ]
