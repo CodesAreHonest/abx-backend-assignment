@@ -9,6 +9,8 @@
     "database": "abx.db",
     "schema": "",
     "synchronize": false,
-    "entities": ["dist/**/**.entity{.ts,.js}"]
+    "entities": ["dist/**/**.entity{.ts,.js}"],
+    "seeds": ["dist/database/seeds/*.seed.js"],
+    "factories": ["dist/database/factories/*.factory.js"]
   }
 ]
