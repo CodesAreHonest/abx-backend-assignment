@@ -6,7 +6,7 @@ define(GenreEntity, (faker: typeof Faker) => {
   const genreName: string = faker.commerce.color();
 
   const genreEntity = new GenreEntity();
-  genreEntity.name = genreName.toUpperCase();
+  genreEntity.name = genreName.charAt(0).toUpperCase() + genreName.slice(1);
 
   return genreEntity;
 });
