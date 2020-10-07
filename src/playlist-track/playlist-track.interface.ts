@@ -1,6 +1,6 @@
 import { TrackEntity } from 'src/tracks/tracks.entity';
 
-export interface PlaylistTrackEntity {
+export interface PlaylistTrackInterface {
   playlistId: number;
   name: string;
   tracks: TrackEntity[];
