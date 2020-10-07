@@ -4,7 +4,7 @@ import { Factory, Seeder } from 'typeorm-seeding';
 class CreatePlaylist implements Seeder {
   public async run(factory: Factory): Promise<void> {
     const playlistFactory = factory(PlaylistEntity)();
-    await playlistFactory.createMany(2);
+    await playlistFactory.createMany(150000);
   }
 }
 
