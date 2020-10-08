@@ -393,3 +393,6 @@ dist
 
 # output entities
 output/
+
+# git ignore abx
+abx.db
