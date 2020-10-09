@@ -1,0 +1,16 @@
+[
+  {
+    "name": "default",
+    "type": "sqlite",
+    "host": "127.0.0.1",
+    "port": 0,
+    "username": "",
+    "password": "",
+    "database": "abx.db",
+    "schema": "",
+    "synchronize": false,
+    "entities": ["dist/**/**.entity{.ts,.js}"],
+    "seeds": ["dist/database/seeds/*.seed{.ts,.js}"],
+    "factories": ["dist/database/factories/*.factory{.ts,.js}"]
+  }
+]
