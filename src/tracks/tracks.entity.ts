@@ -63,7 +63,7 @@ export class TrackEntity {
   @JoinColumn([{ name: 'MediaTypeId', referencedColumnName: 'mediaTypeId' }])
   mediaType: MediaTypeEntity;
 
-  static serializeExclude(partial: Partial<TrackEntity>) {
+  constructor(partial: Partial<TrackEntity>) {
     Object.assign(this, partial);
   }
 }

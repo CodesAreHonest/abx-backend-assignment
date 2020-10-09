@@ -18,6 +18,6 @@ export class TracksController {
   @Get('/')
   async getList(@Query() trackData: GetTrackDto): Promise<TrackEntity> {
     const track = await this.trackService.findOne(trackData);
-    return new TrackEntity.serializeExclude(track);
+    return new TrackEntity(track);
   }
 }

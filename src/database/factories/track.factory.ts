@@ -21,7 +21,7 @@ define(TrackEntity, (faker: typeof Faker) => {
     precision: 0.01,
   });
 
-  const trackEntity = new TrackEntity();
+  const trackEntity = new TrackEntity({});
   trackEntity.name = trackName;
   trackEntity.mediaTypeId = mediaTypeId;
   trackEntity.genreId = genreId;
