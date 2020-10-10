@@ -22,6 +22,7 @@ $ npm ci
 ### 3. Compile and Run the application
 
 ```bash
+$ npm run build
 $ npm run start:prod
 ```
 
