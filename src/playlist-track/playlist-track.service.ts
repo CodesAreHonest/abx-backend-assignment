@@ -58,7 +58,7 @@ export class PlaylistTrackService {
       .andWhere('tracks.name = :trackName COLLATE NOCASE', { trackName })
       .getMany();
 
-    if (!_trackWithPlaylist) {
+    if (_trackWithPlaylist.length === 0) {
       throw new HttpException(
         'Track is not found with given track name and playlist name',
         HttpStatus.NOT_FOUND,

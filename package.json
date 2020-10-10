@@ -33,22 +33,15 @@
     "rxjs": "^6.5.5",
     "sqlite3": "^5.0.0",
     "typeorm": "^0.2.26",
-<<<<<<< HEAD
     "typeorm-model-generator": "^0.4.3",
     "typeorm-seeding": "^1.6.1"
-=======
-    "typeorm-model-generator": "^0.4.3"
->>>>>>> 575075b185b6356b2726c376fd3a063f609d484b
   },
   "devDependencies": {
     "@nestjs/cli": "^7.2.0",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.1.1",
     "@types/express": "^4.17.6",
-<<<<<<< HEAD
     "@types/faker": "^5.1.2",
-=======
->>>>>>> 575075b185b6356b2726c376fd3a063f609d484b
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.6",
     "@types/supertest": "^2.0.9",

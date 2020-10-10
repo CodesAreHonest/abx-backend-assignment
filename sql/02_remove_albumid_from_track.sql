@@ -1,6 +1,6 @@
 CREATE TABLE Track_dg_tmp
 (
-  TrackId INTEGER not null primary key,
+  TrackId INTEGER not null,
   Name NVARCHAR(200) not null,
   MediaTypeId INTEGER not null,
   GenreId INTEGER not null,
