@@ -9,6 +9,10 @@ https://github.com/airboxr/abx-backend-assignment
 
 Unzip the database provided in the mail `abx.db.zip` and place into the root directory.
 
+```bash
+$ unzip abx.db.zip
+```
+
 ### 2. Install the necessary assets 
 
 ```bash
