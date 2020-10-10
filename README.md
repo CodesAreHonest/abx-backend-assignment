@@ -3,6 +3,29 @@
 The projects attempt to achieve the **objectives** provided by POC with the links given below: 
 https://github.com/airboxr/abx-backend-assignment  
 
+## Getting Started
+
+### 1. Unzip the database 
+
+Unzip the database provided in the mail `abx.db.zip` and place into the root directory.
+
+```bash
+$ unzip abx.db.zip
+```
+
+### 2. Install the necessary assets 
+
+```bash
+$ npm ci 
+```
+
+### 3. Compile and Run the application
+
+```bash
+$ npm run build
+$ npm run start:prod
+```
+
 ## Behind The Scenes
 
 This sections outlined how the objectives is achieved with actions and key decisions taken in every single requirements.
