@@ -68,6 +68,15 @@ $ npm run seed:config
 $ npm run seed:run
 ```
 
+The total number of records of each table are tabulated below: 
+
+| Table  | Number Of Records  |
+|:---|---:|
+| Track  | 1003506  |
+| Playlist  |  150021 |
+| PlaylistTrack  | 10022232   |
+
+
 --- 
 
 ### 4. Create the Endpoints 
