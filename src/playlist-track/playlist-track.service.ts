@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { PlaylistTrackInterface } from './playlist-track.interface';
+import { PlaylistTrackEntity } from './playlist-track.interface';
 import { PlaylistEntity } from './playlist.entity';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class PlaylistTrackService {
    * https://github.com/typeorm/typeorm/issues/1231
    */
   getTrackCount = async (name: string): Promise<number> => {
-    const _playlist: PlaylistTrackInterface = await this.playlistRepository
+    const _playlist: PlaylistTrackEntity = await this.playlistRepository
       .createQueryBuilder('playlist')
       .where('LOWER(playlist.name) = :name', { name: name.toLowerCase() })
       .leftJoinAndSelect('playlist.tracks', 'tracks')
@@ -50,7 +50,7 @@ export class PlaylistTrackService {
   getAllWithTrackAndPlaylist = async (
     playlistName: string,
     trackName: string,
-  ): Promise<PlaylistTrackInterface[]> => {
+  ): Promise<PlaylistTrackEntity[]> => {
     const _trackWithPlaylist = await this.playlistRepository
       .createQueryBuilder('playlist')
       .leftJoinAndSelect('playlist.tracks', 'tracks')
