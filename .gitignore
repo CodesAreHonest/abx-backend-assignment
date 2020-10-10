@@ -396,3 +396,4 @@ output/
 
 # git ignore abx
 abx.db
+abx.db.zip
